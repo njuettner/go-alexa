@@ -10,7 +10,7 @@ type responseBody struct {
 	OutputSpeech     outputSpeech  `json:"outputSpeech,omitempty"`
 	Card             card          `json:"card,omitempty"`
 	Reprompt         outputSpeech  `json:"reprompt,omitempty"`
-	ShouldEndSession bool          `json:"shouldEndSession",omitempty"`
+	ShouldEndSession bool          `json:"shouldEndSession,omitempty"`
 	Directives       []interface{} `json:"directives,omitempty"`
 }
 
