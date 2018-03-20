@@ -1,7 +1,5 @@
 # Build Alexa Skills in Go using AWS Lambda
 
-![Amazon Alexa](https://m.media-amazon.com/images/G/01/mobile-apps/dex/logos/alexaLogo1x._V516058141_.png)
-
 ## How it works
 
 See `example/main.go`
@@ -36,3 +34,9 @@ aws lambda create-function \
 Verify if your function was uploaded:
 
 ![Lambda](/images/lambda.png)
+
+- Open your function you've uploaded
+- Add trigger `"Alexa Skills Kit"`
+![Alexa Skills Kit](images/alexa-skills-kit-lambda-trigger.png)
+- Add the Alexa Skill ID from Amazon Developer
+- Save your changes
