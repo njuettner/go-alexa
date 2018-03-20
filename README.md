@@ -40,3 +40,5 @@ Verify if your function was uploaded:
 ![Alexa Skills Kit](images/alexa-skills-kit-lambda-trigger.png)
 - Add the Alexa Skill ID from Amazon Developer
 - Save your changes
+
+Besides that, of course you need to add and configure the Alexa Skill in the [`Developer Console`](https://developer.amazon.com). 
