@@ -5,7 +5,7 @@ import (
 	"github.com/njuettner/alexa"
 )
 
-func alexaDispatchIntentHandler(req alexa.Request) *alexa.Response {
+func alexaDispatchIntentHandler(req alexa.Request) (*alexa.Response, error) {
 	switch req.RequestBody.Intent.Name {
 	case "hello":
 		return alexaGreeterIntentHandler(req)
@@ -18,7 +18,7 @@ func main() {
 	lambda.Start(alexaDispatchIntentHandler)
 }
 
-func alexaGreeterIntentHandler(req alexa.Request) *alexa.Response {
+func alexaGreeterIntentHandler(req alexa.Request) (*alexa.Response, error) {
 	simpleResponse := &alexa.SimpleResponse{
 		OutputSpeechText: "Greetings",
 		CardTitle:        "Greeter",
@@ -38,14 +38,14 @@ func alexaGreeterIntentHandler(req alexa.Request) *alexa.Response {
 	//	},
 	//}
 
-	return alexa.NewResponse(simpleResponse)
+	return alexa.NewResponse(simpleResponse), nil
 }
 
-func alexaHelpHandler() *alexa.Response {
+func alexaHelpHandler() (*alexa.Response, error) {
 	helpResponse := &alexa.SimpleResponse{
 		OutputSpeechText: "Please ask hello to get greetings from your Alexa",
 		CardTitle:        "Help for Greeter",
 		CardContent:      "Card Content",
 	}
-	return alexa.NewResponse(helpResponse)
+	return alexa.NewResponse(helpResponse), nil
 }
