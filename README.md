@@ -1,6 +1,6 @@
 # AWS Alexa Go
 
-[Amazon Alexa]("https://en.wikipedia.org/wiki/Amazon_Alexa#/media/File:Amazon_Alexa_Logo.png")
+![Amazon Alexa](https://m.media-amazon.com/images/G/01/mobile-apps/dex/avs/docs/ux/branding/mark2._TTH_.png)
 
 ## How it works
 
@@ -32,3 +32,7 @@ aws lambda create-function \
   --zip-file fileb://deployment.zip \
   --handler lambda_handler
 ```
+
+Verify if your function was uploaded:
+
+![Lambda](/images/lambda.png)
