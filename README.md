@@ -21,7 +21,7 @@ handler: name of the binary file (here it is lambda_handler) \
 region: in order to run Alexa Skills with AWS Lambda you need to choose eu-west-1, us-east-1 or eu-west-1
 
 ```
-aws lambda create-function \
+$ aws lambda create-function \
   --region eu-west-1 \
   --function-name alexaDispatchIntentHandler \
   --memory 128 \
@@ -35,10 +35,10 @@ Verify if your function was uploaded:
 
 ![Lambda](/images/lambda.png)
 
-- Open your function you've uploaded
-- Add trigger `"Alexa Skills Kit"`
+1. Open your function you've uploaded
+2. Add trigger **"Alexa Skills Kit"**
 ![Alexa Skills Kit](images/alexa-skills-kit-lambda-trigger.png)
-- Add the Alexa Skill ID from Amazon Developer
-- Save your changes
+3. Add the Alexa Skill ID from [**Amazon Developer Console**](https://developer.amazon.com)
+4. Save your changes
 
-Besides that, of course you need to add and configure the Alexa Skill in the [`Developer Console`](https://developer.amazon.com). 
+Besides that, of course you need to add and configure the Alexa Skill in the [**Amazon Developer Console**](https://developer.amazon.com). 
