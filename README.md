@@ -1,6 +1,6 @@
-# AWS Alexa Go
+# Build Alexa Skills in Go using AWS Lambda
 
-![Amazon Alexa](https://m.media-amazon.com/images/G/01/mobile-apps/dex/avs/docs/ux/branding/mark2._TTH_.png)
+![Amazon Alexa](https://m.media-amazon.com/images/G/01/mobile-apps/dex/logos/alexaLogo1x._V516058141_.png)
 
 ## How it works
 
