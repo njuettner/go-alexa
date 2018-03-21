@@ -18,7 +18,7 @@ Assuming you have already installed `aws-cli`:
 **NOTE:**\
 *function-name*: name which handles the requests (in our example it is alexaDispatchIntentHandler)\
 *handler*: name of the binary file (here it is lambda_handler)\
-*region*: in order to run Alexa Skills with AWS Lambda you need to choose eu-west-1, us-east-1 or eu-west-1
+*region*: in order to run Alexa Skills with AWS Lambda you need to choose **eu-west-1**, **us-east-1** or **eu-west-1**
 
 ```
 $ aws lambda create-function \
