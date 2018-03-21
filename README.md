@@ -9,8 +9,8 @@ See `example/main.go`
 Build a binary that runs on Linux and zip it up into a deployment package.
 
 ```
-$ GOOS=linux go build -o lambda_handler
-$ zip deployment.zip main
+$ GOOS=linux go build -o lambda_handler main.go
+$ zip deployment.zip lambda_handler
 ```
 
 Assuming you have already installed `aws-cli`:

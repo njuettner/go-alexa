@@ -19,8 +19,18 @@ func main() {
 }
 
 func alexaGreeterIntentHandler(req alexa.Request) (*alexa.Response, error) {
+	var output string
+	switch req.RequestBody.Locale {
+	case alexa.LocaleGerman:
+		output = "Hallo"
+	case alexa.LocaleJapanese:
+		output = "こんにちは"
+	default:
+		output = "Hello"
+	}
+
 	simpleResponse := &alexa.SimpleResponse{
-		OutputSpeechText: "Greetings",
+		OutputSpeechText: output,
 		CardTitle:        "Greeter",
 		CardContent:      "Greeter Content",
 	}
