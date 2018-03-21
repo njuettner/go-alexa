@@ -7,6 +7,7 @@ const (
 	LocaleEnUK        = "en-GB"
 	LocaleEnIndia     = "en-IN"
 	LocaleEnUS        = "en-US"
+	LocaleFrench      = "fr-FR"
 	LocaleJapanese    = "ja-JP"
 )
 
