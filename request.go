@@ -79,12 +79,9 @@ type RequestBody struct {
 }
 
 type Intent struct {
-	Name               string `json:"name"`
-	ConfirmationStatus string `json:"confirmationStatus"`
-	Slots              struct {
-		Key  string `json:"key"`
-		Slot Slot   `json:"slot"`
-	} `json:"slots"`
+	Name               string          `json:"name"`
+	ConfirmationStatus string          `json:"confirmationStatus"`
+	Slots              map[string]Slot `json:"slots"`
 }
 
 type Slot struct {
