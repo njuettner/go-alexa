@@ -46,8 +46,15 @@ type System struct {
 		ApplicationId string `json:"applicationId"`
 	} `json:"application"`
 	Device struct {
-		DeviceId            string      `json:"deviceId"`
-		SupportedInterfaces interface{} `json:"supportedInterfaces"`
+		DeviceId            string `json:"deviceId"`
+		SupportedInterfaces struct {
+			Display struct {
+			} `json:"display,omitempty"`
+			AudioPlayer struct {
+			} `json:"audioPlayer,omitempty"`
+			VideoApp struct {
+			} `json:"videoApp,omitempty"`
+		} `json:"supportedInterfaces"`
 	} `json:"device"`
 	User struct {
 		UserId      string `json:"userId"`

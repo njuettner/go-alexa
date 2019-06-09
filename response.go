@@ -7,11 +7,11 @@ type Response struct {
 }
 
 type responseBody struct {
-	OutputSpeech     outputSpeech  `json:"outputSpeech,omitempty"`
-	Card             card          `json:"card,omitempty"`
-	Reprompt         outputSpeech  `json:"reprompt,omitempty"`
-	ShouldEndSession bool          `json:"shouldEndSession,omitempty"`
-	Directives       []interface{} `json:"directives,omitempty"`
+	OutputSpeech     outputSpeech `json:"outputSpeech,omitempty"`
+	Card             card         `json:"card,omitempty"`
+	Reprompt         outputSpeech `json:"reprompt,omitempty"`
+	ShouldEndSession bool         `json:"shouldEndSession,omitempty"`
+	Directives       []directive  `json:"directives,omitempty"`
 }
 
 type outputSpeech struct {
@@ -31,6 +31,31 @@ type card struct {
 type cardImage struct {
 	SmallImageUrl string `json:"smallImageUrl,omitempty"`
 	LargeImageUrl string `json:"largeImageUrl,omitempty"`
+}
+
+type directive struct {
+	Type     string `json:"type"`
+	Template struct {
+		Type            string `json:"type"`
+		Token           string `json:"token"`
+		BackButton      string `json:"backButton"`
+		BackgroundImage string `json:"backgroundImage"`
+		Title           string `json:"title"`
+		TextContent     struct {
+			PrimaryText struct {
+				Text string `json:"text"`
+				Type string `json:"type"`
+			} `json:"primaryText"`
+			SecondaryText struct {
+				Text string `json:"text"`
+				Type string `json:"type"`
+			} `json:"secondaryText"`
+			TertiaryText struct {
+				Text string `json:"text"`
+				Type string `json:"type"`
+			} `json:"tertiaryText"`
+		} `json:"textContent"`
+	} `json:"template"`
 }
 
 type responder interface {
