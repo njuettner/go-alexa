@@ -1,5 +1,9 @@
 package alexa
 
+import (
+	"github.com/davecgh/go-spew/spew"
+)
+
 type Response struct {
 	Version           string                 `json:"version"`
 	SessionAttributes map[string]interface{} `json:"sessionAttributes,omitempty"`
@@ -34,23 +38,23 @@ type cardImage struct {
 }
 
 type Directive struct {
-	Type     string   `json:"type"`
-	Template Template `json:"template"`
+	Type     string   `json:"type,omitempty"`
+	Template Template `json:"template,omitempty"`
 }
 
 type Template struct {
-	Type            string      `json:"type"`
-	Token           string      `json:"token"`
-	BackButton      string      `json:"backButton"`
-	BackgroundImage string      `json:"backgroundImage"`
-	Title           string      `json:"title"`
-	TextContent     TextContent `json:"textContent"`
+	Type            string      `json:"type,omitempty"`
+	Token           string      `json:"token,omitempty"`
+	BackButton      string      `json:"backButton,omitempty"`
+	BackgroundImage string      `json:"backgroundImage,omitempty"`
+	Title           string      `json:"title,omitempty"`
+	TextContent     TextContent `json:"textContent,omitempty"`
 }
 
 type TextContent struct {
-	PrimaryText   PrimaryText   `json:"primaryText"`
-	SecondaryText SecondaryText `json:"secondaryText"`
-	TertiaryText  TertiaryText  `json:"tertiaryText"`
+	PrimaryText   PrimaryText   `json:"primaryText,omitempty"`
+	SecondaryText SecondaryText `json:"secondaryText,omitempty"`
+	TertiaryText  TertiaryText  `json:"tertiaryText,omitempty"`
 }
 type PrimaryText struct {
 	Text string `json:"text"`
@@ -94,8 +98,7 @@ type DisplayResponse struct {
 		SmallImageUrl string
 		LargeImageUrl string
 	}
-	CardContent string
-	Directives  []Directive
+	Directives []Directive
 }
 
 type LinkAccountResponse struct {
@@ -143,7 +146,7 @@ func (res *StandardResponse) newResponse() *Response {
 }
 
 func (res *DisplayResponse) newResponse() *Response {
-	return &Response{
+	resp := &Response{
 		Version: "1.0",
 		ResponseBody: responseBody{
 			OutputSpeech: outputSpeech{
@@ -151,9 +154,9 @@ func (res *DisplayResponse) newResponse() *Response {
 				Text: res.OutputSpeechText,
 			},
 			Card: card{
-				Type:    "Standard",
-				Title:   res.CardTitle,
-				Content: res.CardContent,
+				Type:  "Standard",
+				Title: res.CardTitle,
+				Text:  res.CardText,
 				Image: cardImage{
 					SmallImageUrl: res.CardImage.SmallImageUrl,
 					LargeImageUrl: res.CardImage.LargeImageUrl,
@@ -164,6 +167,7 @@ func (res *DisplayResponse) newResponse() *Response {
 					Type: "Display.RenderTemplate",
 					Template: Template{
 						Type:            "BodyTemplate1",
+						Token:           res.Directives[0].Template.Token,
 						BackButton:      res.Directives[0].Template.BackButton,
 						BackgroundImage: res.Directives[0].Template.BackgroundImage,
 						Title:           res.Directives[0].Template.Title,
@@ -174,6 +178,8 @@ func (res *DisplayResponse) newResponse() *Response {
 			ShouldEndSession: true,
 		},
 	}
+	spew.Dump(resp)
+	return resp
 }
 
 func (res *LinkAccountResponse) newResponse() *Response {
