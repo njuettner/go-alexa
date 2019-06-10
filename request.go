@@ -59,14 +59,17 @@ type System struct {
 }
 
 type SupportedInterfaces struct {
-	Display struct {
-		TemplateVersion string `json:"templateVersion,omitempty"`
-		MarkupVersion   string `json:"markupVersion,omitempty"`
-	} `json:"display,omitempty"`
-	AudioPlayer struct {
-	} `json:"audioPlayer,omitempty"`
-	VideoApp struct {
-	} `json:"videoApp,omitempty"`
+	Display     Display     `json:"display,omitempty"`
+	AudioPlayer AudioPlayer `json:"audioPlayer,omitempty"`
+	VideoApp    VideoApp    `json:"videoApp,omitempty"`
+}
+
+type Display struct {
+	TemplateVersion string `json:"templateVersion,omitempty"`
+	MarkupVersion   string `json:"markupVersion,omitempty"`
+}
+
+type VideoApp struct {
 }
 
 type AudioPlayer struct {
