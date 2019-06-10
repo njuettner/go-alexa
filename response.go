@@ -92,13 +92,7 @@ type StandardResponse struct {
 
 type DisplayResponse struct {
 	OutputSpeechText string
-	CardTitle        string
-	CardText         string
-	CardImage        struct {
-		SmallImageUrl string
-		LargeImageUrl string
-	}
-	Directives []Directive
+	Directives       []Directive
 }
 
 type LinkAccountResponse struct {
