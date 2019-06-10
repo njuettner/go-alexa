@@ -48,20 +48,24 @@ type Template struct {
 }
 
 type TextContent struct {
-	PrimaryText struct {
-		Text string `json:"text"`
-		Type string `json:"type"`
-	} `json:"primaryText"`
-	SecondaryText struct {
-		Text string `json:"text"`
-		Type string `json:"type"`
-	} `json:"secondaryText"`
-	TertiaryText struct {
-		Text string `json:"text"`
-		Type string `json:"type"`
-	} `json:"tertiaryText"`
+	PrimaryText   PrimaryText   `json:"primaryText"`
+	SecondaryText SecondaryText `json:"secondaryText"`
+	TertiaryText  TertiaryText  `json:"tertiaryText"`
+}
+type PrimaryText struct {
+	Text string `json:"text"`
+	Type string `json:"type"`
 }
 
+type SecondaryText struct {
+	Text string `json:"text"`
+	Type string `json:"type"`
+}
+
+type TertiaryText struct {
+	Text string `json:"text"`
+	Type string `json:"type"`
+}
 type responder interface {
 	newResponse() *Response
 }
