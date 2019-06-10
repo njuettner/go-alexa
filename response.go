@@ -89,8 +89,13 @@ type StandardResponse struct {
 type DisplayResponse struct {
 	OutputSpeechText string
 	CardTitle        string
-	CardContent      string
-	Directives       []Directive
+	CardText         string
+	CardImage        struct {
+		SmallImageUrl string
+		LargeImageUrl string
+	}
+	CardContent string
+	Directives  []Directive
 }
 
 type LinkAccountResponse struct {
@@ -146,12 +151,16 @@ func (res *DisplayResponse) newResponse() *Response {
 				Text: res.OutputSpeechText,
 			},
 			Card: card{
-				Type:    "Simple",
+				Type:    "Standard",
 				Title:   res.CardTitle,
 				Content: res.CardContent,
+				Image: cardImage{
+					SmallImageUrl: res.CardImage.SmallImageUrl,
+					LargeImageUrl: res.CardImage.LargeImageUrl,
+				},
 			},
 			Directives: []Directive{
-				{
+				Directive{
 					Type: "Display.RenderTemplate",
 					Template: Template{
 						Type:            "BodyTemplate1",
