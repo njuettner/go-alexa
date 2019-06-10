@@ -34,31 +34,33 @@ type cardImage struct {
 }
 
 type Directive struct {
-	Type     string `json:"type"`
+	Type     string   `json:"type"`
 	Template Template `json:"template"`
 }
 
 type Template struct {
-		Type            string `json:"type"`
-		Token           string `json:"token"`
-		BackButton      string `json:"backButton"`
-		BackgroundImage string `json:"backgroundImage"`
-		Title           string `json:"title"`
-		TextContent     struct {
-			PrimaryText struct {
-				Text string `json:"text"`
-				Type string `json:"type"`
-			} `json:"primaryText"`
-			SecondaryText struct {
-				Text string `json:"text"`
-				Type string `json:"type"`
-			} `json:"secondaryText"`
-			TertiaryText struct {
-				Text string `json:"text"`
-				Type string `json:"type"`
-			} `json:"tertiaryText"`
-		} `json:"textContent"`
-} 
+	Type            string      `json:"type"`
+	Token           string      `json:"token"`
+	BackButton      string      `json:"backButton"`
+	BackgroundImage string      `json:"backgroundImage"`
+	Title           string      `json:"title"`
+	TextContent     TextContent `json:"textContent"`
+}
+
+type TextContent struct {
+	PrimaryText struct {
+		Text string `json:"text"`
+		Type string `json:"type"`
+	} `json:"primaryText"`
+	SecondaryText struct {
+		Text string `json:"text"`
+		Type string `json:"type"`
+	} `json:"secondaryText"`
+	TertiaryText struct {
+		Text string `json:"text"`
+		Type string `json:"type"`
+	} `json:"tertiaryText"`
+}
 
 type responder interface {
 	newResponse() *Response
@@ -148,12 +150,12 @@ func (res *DisplayResponse) newResponse() *Response {
 				{
 					Type: "Display.RenderTemplate",
 					Template: Template{
-						Type:  "BodyTemplate1",
-						Token: res.Directives[0].Template.Token,
-						BackButton: res.Directives[0].Template.BackButton,
+						Type:            "BodyTemplate1",
+						Token:           res.Directives[0].Template.Token,
+						BackButton:      res.Directives[0].Template.BackButton,
 						BackgroundImage: res.Directives[0].Template.BackgroundImage,
-						Title: res.Directives[0].Template.Title,
-						TextContent: res.Directives[0].Template.TextContent,
+						Title:           res.Directives[0].Template.Title,
+						TextContent:     res.Directives[0].Template.TextContent,
 					},
 				},
 			},
