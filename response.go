@@ -154,9 +154,6 @@ func (res *DisplayResponse) newResponse() *Response {
 				Title:   res.CardTitle,
 				Content: res.CardContent,
 			},
-			SessionAttributes: sessionAttributes{
-				"template": "body_1",
-			}
 			Directives: []Directive{
 				Directive{
 					Type: "Display.RenderTemplate",
