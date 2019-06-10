@@ -153,15 +153,6 @@ func (res *DisplayResponse) newResponse() *Response {
 				Type: "PlainText",
 				Text: res.OutputSpeechText,
 			},
-			Card: card{
-				Type:  "Standard",
-				Title: res.CardTitle,
-				Text:  res.CardText,
-				Image: cardImage{
-					SmallImageUrl: res.CardImage.SmallImageUrl,
-					LargeImageUrl: res.CardImage.LargeImageUrl,
-				},
-			},
 			Directives: []Directive{
 				Directive{
 					Type: "Display.RenderTemplate",
