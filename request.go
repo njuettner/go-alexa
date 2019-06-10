@@ -49,6 +49,8 @@ type System struct {
 		DeviceId            string `json:"deviceId"`
 		SupportedInterfaces struct {
 			Display struct {
+				TemplateVersion string `json:"templateVersion,omitempty"`
+				MarkupVersion   string `json:"markupVersion,omitempty"`
 			} `json:"display,omitempty"`
 			AudioPlayer struct {
 			} `json:"audioPlayer,omitempty"`
