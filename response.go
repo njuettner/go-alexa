@@ -35,10 +35,10 @@ type cardImage struct {
 
 type Directive struct {
 	Type     string `json:"type"`
-	Template template `json:"template"`
+	Template Template `json:"template"`
 }
 
-type template struct {
+type Template struct {
 		Type            string `json:"type"`
 		Token           string `json:"token"`
 		BackButton      string `json:"backButton"`
@@ -147,7 +147,7 @@ func (res *DisplayResponse) newResponse() *Response {
 			Directives: []Directive{
 				{
 					Type: "Display.RenderTemplate",
-					Template: template{
+					Template: Template{
 						Type:  "BodyTemplate1",
 						Token: res.Directives[0].Template.Token,
 						BackButton: res.Directives[0].Template.BackButton,
