@@ -25,7 +25,7 @@ type outputSpeech struct {
 }
 
 type card struct {
-	Type    string    `json:"type"`
+	Type    string    `json:"type,omitempty"`
 	Title   string    `json:"title,omitempty"`
 	Content string    `json:"content,omitempty"`
 	Text    string    `json:"text,omitempty"`
@@ -57,18 +57,18 @@ type TextContent struct {
 	TertiaryText  TertiaryText  `json:"tertiaryText,omitempty"`
 }
 type PrimaryText struct {
-	Text string `json:"text"`
-	Type string `json:"type"`
+	Text string `json:"text,omitempty"`
+	Type string `json:"type,omitempty"`
 }
 
 type SecondaryText struct {
-	Text string `json:"text"`
-	Type string `json:"type"`
+	Text string `json:"text,omitempty"`
+	Type string `json:"type,omitempty"`
 }
 
 type TertiaryText struct {
-	Text string `json:"text"`
-	Type string `json:"type"`
+	Text string `json:"text,omitempty"`
+	Type string `json:"type,omitempty"`
 }
 type responder interface {
 	newResponse() *Response
@@ -92,7 +92,13 @@ type StandardResponse struct {
 
 type DisplayResponse struct {
 	OutputSpeechText string
-	Directives       []Directive
+	CardTitle        string
+	CardText         string
+	CardImage        struct {
+		SmallImageUrl string
+		LargeImageUrl string
+	}
+	Directives []Directive
 }
 
 type LinkAccountResponse struct {
@@ -146,6 +152,15 @@ func (res *DisplayResponse) newResponse() *Response {
 			OutputSpeech: outputSpeech{
 				Type: "PlainText",
 				Text: res.OutputSpeechText,
+			},
+			Card: card{
+				Type:  "Standard",
+				Title: res.CardTitle,
+				Text:  res.CardText,
+				Image: cardImage{
+					SmallImageUrl: res.CardImage.SmallImageUrl,
+					LargeImageUrl: res.CardImage.LargeImageUrl,
+				},
 			},
 			Directives: []Directive{
 				Directive{
