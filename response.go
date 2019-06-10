@@ -164,7 +164,6 @@ func (res *DisplayResponse) newResponse() *Response {
 					Type: "Display.RenderTemplate",
 					Template: Template{
 						Type:            "BodyTemplate1",
-						Token:           res.Directives[0].Template.Token,
 						BackButton:      res.Directives[0].Template.BackButton,
 						BackgroundImage: res.Directives[0].Template.BackgroundImage,
 						Title:           res.Directives[0].Template.Title,
