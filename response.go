@@ -1,5 +1,3 @@
-package alexa
-
 import (
 	"github.com/davecgh/go-spew/spew"
 )
@@ -166,12 +164,11 @@ func (res *DisplayResponse) newResponse() *Response {
 				Directive{
 					Type: "Display.RenderTemplate",
 					Template: Template{
-						Type:            "BodyTemplate1",
-						Token:           res.Directives[0].Template.Token,
-						BackButton:      res.Directives[0].Template.BackButton,
-						BackgroundImage: res.Directives[0].Template.BackgroundImage,
-						Title:           res.Directives[0].Template.Title,
-						TextContent:     res.Directives[0].Template.TextContent,
+						Type:        "BodyTemplate1",
+						Token:       res.Directives[0].Template.Token,
+						BackButton:  res.Directives[0].Template.BackButton,
+						Title:       res.Directives[0].Template.Title,
+						TextContent: res.Directives[0].Template.TextContent,
 					},
 				},
 			},
