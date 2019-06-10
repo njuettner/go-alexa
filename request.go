@@ -47,7 +47,7 @@ type System struct {
 	} `json:"application"`
 	Device struct {
 		DeviceId            string              `json:"deviceId"`
-		SupportedInterfaces SupportedInterfaces `json:"supportedInterfaces"`
+		SupportedInterfaces SupportedInterfaces `json:"supportedInterfaces,omitempty"`
 	} `json:"device"`
 	User struct {
 		UserId      string `json:"userId"`
