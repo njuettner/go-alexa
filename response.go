@@ -11,7 +11,7 @@ type responseBody struct {
 	Card             card         `json:"card,omitempty"`
 	Reprompt         outputSpeech `json:"reprompt,omitempty"`
 	ShouldEndSession bool         `json:"shouldEndSession,omitempty"`
-	Directives       []directive  `json:"directives,omitempty"`
+	Directives       []Directive  `json:"directives,omitempty"`
 }
 
 type outputSpeech struct {
@@ -33,9 +33,12 @@ type cardImage struct {
 	LargeImageUrl string `json:"largeImageUrl,omitempty"`
 }
 
-type directive struct {
+type Directive struct {
 	Type     string `json:"type"`
-	Template struct {
+	Template template `json:"template"`
+}
+
+type template struct {
 		Type            string `json:"type"`
 		Token           string `json:"token"`
 		BackButton      string `json:"backButton"`
@@ -55,8 +58,7 @@ type directive struct {
 				Type string `json:"type"`
 			} `json:"tertiaryText"`
 		} `json:"textContent"`
-	} `json:"template"`
-}
+} 
 
 type responder interface {
 	newResponse() *Response
@@ -76,6 +78,13 @@ type StandardResponse struct {
 		SmallImageUrl string
 		LargeImageUrl string
 	}
+}
+
+type DisplayResponse struct {
+	OutputSpeechText string
+	CardTitle        string
+	CardContent      string
+	Directives       []Directive
 }
 
 type LinkAccountResponse struct {
@@ -115,6 +124,37 @@ func (res *StandardResponse) newResponse() *Response {
 				Image: cardImage{
 					SmallImageUrl: res.CardImage.SmallImageUrl,
 					LargeImageUrl: res.CardImage.LargeImageUrl,
+				},
+			},
+			ShouldEndSession: true,
+		},
+	}
+}
+
+func (res *DisplayResponse) newResponse() *Response {
+	return &Response{
+		Version: "1.0",
+		ResponseBody: responseBody{
+			OutputSpeech: outputSpeech{
+				Type: "PlainText",
+				Text: res.OutputSpeechText,
+			},
+			Card: card{
+				Type:    "Simple",
+				Title:   res.CardTitle,
+				Content: res.CardContent,
+			},
+			Directives: []Directive{
+				{
+					Type: "Display.RenderTemplate",
+					Template: template{
+						Type:  "BodyTemplate1",
+						Token: res.Directives[0].Template.Token,
+						BackButton: res.Directives[0].Template.BackButton,
+						BackgroundImage: res.Directives[0].Template.BackgroundImage,
+						Title: res.Directives[0].Template.Title,
+						TextContent: res.Directives[0].Template.TextContent,
+					},
 				},
 			},
 			ShouldEndSession: true,
