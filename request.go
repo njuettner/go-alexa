@@ -46,17 +46,8 @@ type System struct {
 		ApplicationId string `json:"applicationId"`
 	} `json:"application"`
 	Device struct {
-		DeviceId            string `json:"deviceId"`
-		SupportedInterfaces struct {
-			Display struct {
-				TemplateVersion string `json:"templateVersion,omitempty"`
-				MarkupVersion   string `json:"markupVersion,omitempty"`
-			} `json:"display,omitempty"`
-			AudioPlayer struct {
-			} `json:"audioPlayer,omitempty"`
-			VideoApp struct {
-			} `json:"videoApp,omitempty"`
-		} `json:"supportedInterfaces"`
+		DeviceId            string              `json:"deviceId"`
+		SupportedInterfaces SupportedInterfaces `json:"supportedInterfaces"`
 	} `json:"device"`
 	User struct {
 		UserId      string `json:"userId"`
@@ -65,6 +56,17 @@ type System struct {
 			ConsentToken string `json:"consentToken,omitempty"`
 		} `json:"permissions,omitempty"`
 	} `json:"user"`
+}
+
+type SupportedInterfaces struct {
+	Display struct {
+		TemplateVersion string `json:"templateVersion,omitempty"`
+		MarkupVersion   string `json:"markupVersion,omitempty"`
+	} `json:"display,omitempty"`
+	AudioPlayer struct {
+	} `json:"audioPlayer,omitempty"`
+	VideoApp struct {
+	} `json:"videoApp,omitempty"`
 }
 
 type AudioPlayer struct {
