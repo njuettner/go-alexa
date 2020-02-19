@@ -1,9 +1,5 @@
 package alexa
 
-import (
-	"github.com/davecgh/go-spew/spew"
-)
-
 type Response struct {
 	Version           string                 `json:"version"`
 	SessionAttributes map[string]interface{} `json:"sessionAttributes,omitempty"`
@@ -169,7 +165,6 @@ func (res *DisplayResponse) newResponse() *Response {
 			ShouldEndSession: true,
 		},
 	}
-	spew.Dump(resp)
 	return resp
 }
 
